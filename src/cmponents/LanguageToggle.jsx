@@ -1,10 +1,4 @@
-const LanguageToggle = ({
-  lang,
-  setLang,
-}: {
-  lang: string;
-  setLang: (lang: string) => void;
-}) => (
+const LanguageToggle = ({ lang, setLang }) => (
   <div className="flex absolute right-30 bg-zinc-900 p-1 rounded-lg border border-zinc-800">
     <button
       onClick={() => {

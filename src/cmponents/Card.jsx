@@ -1,7 +1,7 @@
 import { Clock, Crown, Shield, Sword } from "lucide-react";
 import { getSideStyles, TRANSLATIONS } from "../helpers";
 
-const Card = ({ activity }: { activity: any }) => {
+const Card = ({ activity }) => {
   const lang = localStorage.getItem("language") || "ua";
   const t = TRANSLATIONS[lang];
   const styles = getSideStyles(activity);

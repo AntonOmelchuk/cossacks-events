@@ -1,4 +1,4 @@
-const Header = ({ title }: { title: string }) => (
+const Header = ({ title }) => (
   <div className="flex items-center space-x-3 bg-zinc-900/50 border border-zinc-800 px-6 py-2 rounded-full shadow-lg">
     <span className="text-blue-400 font-bold text-xl">🇺🇦</span>
     <h1 className="text-xl font-medium tracking-wider uppercase">
