@@ -9,7 +9,8 @@ import Fortress_of_the_Dead_Image from "./assets/Fortress_of_the_Dead.png";
 import Baium from "./assets/Baium.png";
 import Rune from "./assets/Rune.png";
 import Card from "./cmponents/Card";
-import { TRANSLATIONS } from "./helpers";
+import { ACTIVITY_TYPES, SIDES } from "./utils/config";
+import { TRANSLATIONS } from "./utils/translates";
 import LanguageToggle from "./cmponents/LanguageToggle";
 import Header from "./cmponents/Header";
 
@@ -24,7 +25,14 @@ const activities = [
     clan: "FightClub",
     icon: Shield,
     image: Fortress_of_Resistance_Image,
-    type: "defense",
+    type: ACTIVITY_TYPES.SIEGE,
+    side: SIDES.DEFENSE,
+  },
+  {
+    title: "Olympiad Games",
+    type: ACTIVITY_TYPES.OLYMPIAD,
+    date: "15",
+    time: "23:30",
   },
   {
     date: "11",
@@ -33,7 +41,14 @@ const activities = [
     clan: "Kriminalides",
     icon: Sword,
     image: Devastated_Castle_Image,
-    type: "attack",
+    type: ACTIVITY_TYPES.SIEGE,
+    side: SIDES.ATTACK,
+  },
+  {
+    title: "Olympiad Games",
+    type: ACTIVITY_TYPES.OLYMPIAD,
+    date: "11",
+    time: "23:30",
   },
   {
     date: "13",
@@ -42,7 +57,8 @@ const activities = [
     clan: "Cartel",
     icon: Shield,
     image: Bandit_Stronghold_Image,
-    type: "defense",
+    type: ACTIVITY_TYPES.SIEGE,
+    side: SIDES.DEFENSE,
   },
   {
     date: "11",
@@ -51,7 +67,8 @@ const activities = [
     clan: "NoldoR",
     icon: Sword,
     image: Rainbow_Spring_Chateau_Image,
-    type: "attack",
+    type: ACTIVITY_TYPES.SIEGE,
+    side: SIDES.ATTACK,
   },
   {
     date: "14",
@@ -60,7 +77,8 @@ const activities = [
     clan: "OrzelBialy",
     icon: Sword,
     image: Wild_Beast_Reserve_Image,
-    type: "attack",
+    type: ACTIVITY_TYPES.SIEGE,
+    side: SIDES.ATTACK,
   },
   {
     date: "12",
@@ -69,7 +87,8 @@ const activities = [
     clan: "DreamzTeam",
     icon: Shield,
     image: Fortress_of_the_Dead_Image,
-    type: "defense",
+    type: ACTIVITY_TYPES.SIEGE,
+    side: SIDES.DEFENSE,
   },
   {
     date: "16",
@@ -77,7 +96,8 @@ const activities = [
     title: "Baium",
     icon: Crown,
     image: Baium,
-    type: "epic",
+    type: ACTIVITY_TYPES.EPIC,
+    side: SIDES.NEUTRAL,
   },
   {
     date: "17",
@@ -85,7 +105,8 @@ const activities = [
     title: "Rune",
     icon: Sword,
     image: Rune,
-    type: "attack",
+    type: ACTIVITY_TYPES.SIEGE,
+    side: SIDES.ATTACK,
   },
 ];
 
@@ -131,7 +152,7 @@ const ActivityDashboard = () => {
               {activities
                 .filter((act) => act.date === day.date)
                 .map((activity, idx) => (
-                  <Card key={idx} activity={activity} />
+                  <Card key={idx} activity={activity} lang={lang} />
                 ))}
             </div>
           </div>

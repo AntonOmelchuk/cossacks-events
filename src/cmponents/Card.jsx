@@ -1,52 +1,52 @@
-import { Clock, Crown, Shield, Sword } from "lucide-react";
-import { getSideStyles, TRANSLATIONS } from "../helpers";
+import React from "react";
+import { Clock } from "lucide-react";
+import { getSideStyles } from "../utils/helpers";
 
-const Card = ({ activity }) => {
-  const lang = localStorage.getItem("language") || "ua";
-  const t = TRANSLATIONS[lang];
-  const styles = getSideStyles(activity);
+const Card = ({ activity, lang = "ua" }) => {
+  // 1. Отримуємо всі стилі, іконку та перекладену мітку з хелпера
+  const styles = getSideStyles(activity, lang);
+  const Icon = styles.icon;
 
   return (
     <div
-      className={`relative ${styles.bg} border ${styles.border} ${styles.shadow} rounded-2xl p-4 transition-all duration-300 hover:scale-[1.02]`}
+      className={`relative ${styles.bg} border ${styles.border} ${styles.shadow} rounded-2xl p-4 transition-all duration-300 hover:scale-[1.02] h-full flex flex-col justify-between`}
     >
-      {/* Верхня мітка (ЕПІК / АТАКА / ЗАХИСТ) */}
+      {/* Верхня мітка (ЕПІК / ШТУРМ / ОБОРОНА / ОЛІМП тощо) */}
       <div
         className={`text-[10px] font-black ${styles.text} mb-3 tracking-[0.2em] flex items-center space-x-1`}
       >
         <span
-          className={`w-2.5 h-2.5 rounded-full ${styles.iconBg} animate-pulse`}
+          className={`w-2 h-2 rounded-full ${styles.iconBg} animate-pulse shadow-[0_0_8px] shadow-current`}
         ></span>
-        <span>{t[activity.type]}</span>
+        <span className="uppercase">{styles.label}</span>
       </div>
 
       <div className="flex items-center space-x-3">
+        {/* Контейнер іконки */}
         <div
-          className={`w-9 h-9 ${styles.iconBg} rounded-lg flex items-center justify-center shadow-lg text-white`}
+          className={`w-10 h-10 ${styles.iconBg} rounded-lg flex items-center justify-center shadow-lg text-white shrink-0`}
         >
-          {/* Вибір іконки залежно від типу */}
-          {activity.type === "epic" ? (
-            <Crown size={18} />
-          ) : activity.type === "attack" ? (
-            <Sword size={18} />
-          ) : (
-            <Shield size={18} />
-          )}
+          <Icon size={20} />
         </div>
 
-        <div>
-          <h4 className="text-sm font-bold text-zinc-100 uppercase tracking-tight">
+        <div className="min-w-0">
+          <h4 className="text-sm font-bold text-zinc-100 uppercase tracking-tight truncate">
             {activity.title}
           </h4>
 
-          <div className="flex items-center mt-2">
+          <div className="flex flex-wrap items-center mt-1 gap-2">
             <div className="flex items-center text-zinc-300 space-x-1">
-              <Clock size={16} />
-              <span className="text-4 font-mono">{activity.time}</span>
+              <Clock size={14} className="text-zinc-500" />
+              <span className="text-[13px] font-mono font-medium">
+                {activity.time}
+              </span>
             </div>
-            <span className="text-[10px] text-zinc-400 uppercase tracking-widest ml-2">
-              {activity.clan}
-            </span>
+
+            {activity.clan && (
+              <span className="text-[10px] text-zinc-500 uppercase tracking-wider px-2 py-0.5 bg-zinc-800/50 rounded border border-zinc-700/50">
+                {activity.clan}
+              </span>
+            )}
           </div>
         </div>
       </div>
