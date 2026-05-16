@@ -9,7 +9,7 @@ const Card = ({ activity, lang = "ua" }) => {
 
   return (
     <div
-      className={`relative ${styles.bg} border ${styles.border} ${styles.shadow} rounded-2xl p-4 transition-all duration-300 hover:scale-[1.02] h-full flex flex-col justify-between`}
+      className={`relative ${styles.bg} border ${styles.border} ${styles.shadow} rounded-2xl p-4 sm:p-5 transition-all duration-300 hover:scale-[1.02] h-full flex flex-col justify-between min-h-[150px]`}
     >
       {/* Верхня мітка (ЕПІК / ШТУРМ / ОБОРОНА / ОЛІМП тощо) */}
       <div
@@ -21,7 +21,7 @@ const Card = ({ activity, lang = "ua" }) => {
         <span className="uppercase">{styles.label}</span>
       </div>
 
-      <div className="flex items-center space-x-3">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:space-x-3">
         {/* Контейнер іконки */}
         <div
           className={`w-10 h-10 ${styles.iconBg} rounded-lg flex items-center justify-center shadow-lg text-white shrink-0`}

@@ -1,5 +1,5 @@
 const LanguageToggle = ({ lang, setLang }) => (
-  <div className="flex absolute right-30 bg-zinc-900 p-1 rounded-lg border border-zinc-800">
+  <div className="flex items-center gap-1 bg-zinc-900/80 p-1 rounded-lg border border-zinc-800 shadow-sm">
     <button
       onClick={() => {
         setLang("ua");
