@@ -8,6 +8,8 @@ export const TRANSLATIONS = {
     boss: "РЕЙД БОС",
     training: "ЗБІР",
     olympiad: "ОЛІМПІАДА",
+    serverTime: "Серверний час",
+    kievTime: "Київський час",
     days: {
       mon: "ПОНЕДІЛОК",
       tue: "ВІВТОРОК",
@@ -27,6 +29,8 @@ export const TRANSLATIONS = {
     boss: "RAID BOSS",
     training: "MEETING",
     olympiad: "OLYMPIAD",
+    serverTime: "Server Time",
+    kievTime: "Kyiv Time",
     days: {
       mon: "MONDAY",
       tue: "TUESDAY",

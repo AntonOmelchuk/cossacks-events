@@ -35,3 +35,32 @@ export const getSideStyles = (activity, lang = "ua") => {
     label: t[config.translationKey] || "ACTIVITY",
   };
 };
+
+// Функція перерахунку з фіксованим правилом для опівночі (24:00 -> 00:00 без зміни дати)
+export const getAdjustedActivities = (activities, timezone) => {
+  return activities.map((act) => {
+    if (timezone === "server" || !act.time) return act;
+
+    const [hours, minutes] = act.time.split(":").map(Number);
+    let adjustedHours = hours + 3;
+    let adjustedDate = Number(act.date);
+
+    if (adjustedHours > 24) {
+      // Якщо час перевалив за північ (наприклад 25:00 це 01:00 наступного дня)
+      adjustedHours -= 24;
+      adjustedDate += 1;
+    } else if (adjustedHours === 24) {
+      // Якщо рівно 24:00 (ігровий вечір поточного дня закінчується опівночі)
+      adjustedHours = 0; // показуємо як 00:00, але ЦЕНТРАЛЬНУ ДАТУ НЕ ЗМІНЮЄМО
+    }
+
+    const formattedHours = String(adjustedHours).padStart(2, "0");
+    const formattedMinutes = String(minutes).padStart(2, "0");
+
+    return {
+      ...act,
+      time: `${formattedHours}:${formattedMinutes}`,
+      date: String(adjustedDate),
+    };
+  });
+};
